@@ -1,14 +1,17 @@
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { api } from "../api/client";
 import ProductCard from "../components/ProductCard";
 
 export default function ShopPage() {
   const [products, setProducts] = useState([]);
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
   const [query, setQuery] = useState({
-    search: "",
-    category: "",
-    sort: "newest",
-    page: 1,
+    search: params.get("search") || "",
+    category: params.get("category") || "",
+    sort: params.get("sort") || "newest",
+    page: parseInt(params.get("page"), 10) || 1,
   });
   const [pagination, setPagination] = useState({ page: 1, totalPages: 1 });
 
