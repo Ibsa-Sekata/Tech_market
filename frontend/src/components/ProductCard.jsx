@@ -10,7 +10,11 @@ export default function ProductCard({ product }) {
   return (
     <article className="card product-card">
       <div style={{ position: "relative" }}>
-        <img alt={product.name} className="product-image" src={product.imageUrl} />
+        <img
+          alt={product.name}
+          className="product-image"
+          src={product.imageUrl}
+        />
         <button
           aria-label="Toggle wishlist"
           onClick={() => toggle(product)}
@@ -23,7 +27,9 @@ export default function ProductCard({ product }) {
       </div>
 
       <h3 style={{ margin: 0 }}>{product.name}</h3>
-      <p className="muted" style={{ margin: 0 }}>{product.category}</p>
+      <p className="muted" style={{ margin: 0 }}>
+        {product.category}
+      </p>
       <div className="card-footer">
         <div>
           <div className="price-tag">${product.price.toFixed(2)}</div>
