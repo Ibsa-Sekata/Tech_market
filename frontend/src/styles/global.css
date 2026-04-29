@@ -1,6 +1,6 @@
 :root {
   --bg: #0f1724; /* deep background */
-  --surface: linear-gradient(180deg,#0b1220 0%, #071025 100%);
+  --surface: linear-gradient(180deg, #0b1220 0%, #071025 100%);
   --card: #0b1228;
   --text: #e6eef8;
   --muted: #9aa7b9;
@@ -8,8 +8,8 @@
   --accent: #7c3aed;
   --success: #10b981;
   --danger: #ef4444;
-  --glass: rgba(255,255,255,0.04);
-  --border: rgba(255,255,255,0.06);
+  --glass: rgba(255, 255, 255, 0.04);
+  --border: rgba(255, 255, 255, 0.06);
 }
 
 * {
@@ -18,15 +18,31 @@
 
 body {
   margin: 0;
-  font-family: Inter, "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial;
+  font-family:
+    Inter,
+    "Segoe UI",
+    system-ui,
+    -apple-system,
+    "Helvetica Neue",
+    Arial;
   color: var(--text);
-  background: radial-gradient(1200px 400px at 10% 10%, rgba(37,99,235,0.08), transparent), #071025;
-  -webkit-font-smoothing:antialiased;
+  background:
+    radial-gradient(
+      1200px 400px at 10% 10%,
+      rgba(37, 99, 235, 0.08),
+      transparent
+    ),
+    #071025;
+  -webkit-font-smoothing: antialiased;
 }
 
 a {
   color: var(--primary);
   text-decoration: none;
+}
+
+.muted {
+  color: var(--muted);
 }
 
 .container {
@@ -40,7 +56,11 @@ a {
 }
 
 .navbar {
-  background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.02),
+    rgba(255, 255, 255, 0.01)
+  );
   color: var(--text);
   border-bottom: 1px solid var(--border);
   position: sticky;
@@ -50,7 +70,25 @@ a {
 }
 
 .navbar a {
-  color: #fff;
+  color: var(--text);
+}
+
+.nav-links a,
+.nav-links button,
+.wishlist-link {
+  padding: 0.4rem 0.55rem;
+  border-radius: 10px;
+}
+
+.nav-links a:hover,
+.wishlist-link:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.nav-links a[aria-current="page"],
+.wishlist-link[aria-current="page"] {
+  background: rgba(37, 99, 235, 0.18);
+  border: 1px solid rgba(37, 99, 235, 0.25);
 }
 
 .navbar-inner {
@@ -125,7 +163,11 @@ a {
   display: grid;
   place-items: center;
   min-height: 56vh;
-  background: linear-gradient(120deg, rgba(34,197,94,0.06), rgba(37,99,235,0.04));
+  background: linear-gradient(
+    120deg,
+    rgba(34, 197, 94, 0.06),
+    rgba(37, 99, 235, 0.04)
+  );
   border-radius: 14px;
   padding: 2rem;
 }
@@ -137,11 +179,15 @@ a {
 }
 
 .card {
-  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.02),
+    rgba(255, 255, 255, 0.01)
+  );
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 0.9rem;
-  box-shadow: 0 6px 30px rgba(2,6,23,0.6);
+  box-shadow: 0 6px 30px rgba(2, 6, 23, 0.6);
 }
 
 .product-card {
@@ -159,28 +205,30 @@ a {
 
 .product-card:hover {
   transform: translateY(-6px);
-  transition: transform 180ms ease, box-shadow 180ms ease;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
 }
 
 .price-tag {
   font-weight: 700;
   color: var(--text);
-  background: linear-gradient(90deg,var(--primary),var(--accent));
+  background: linear-gradient(90deg, var(--primary), var(--accent));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
 .card-footer {
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
 }
 
 .icon-btn {
   background: transparent;
-  border: 1px solid rgba(255,255,255,0.04);
+  border: 1px solid rgba(255, 255, 255, 0.04);
   padding: 0.45rem;
   border-radius: 8px;
   cursor: pointer;
@@ -210,6 +258,21 @@ button {
   border: 1px solid var(--border);
 }
 
+input,
+select {
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text);
+}
+
+input::placeholder {
+  color: rgba(230, 238, 248, 0.6);
+}
+
+:focus-visible {
+  outline: 2px solid rgba(37, 99, 235, 0.6);
+  outline-offset: 2px;
+}
+
 button {
   cursor: pointer;
 }
@@ -220,10 +283,28 @@ button {
   border: 1px solid var(--primary);
 }
 
+.btn-primary:hover {
+  filter: brightness(1.08);
+}
+
 .btn-secondary {
-  background: #eef2ff;
-  color: #1e3a8a;
-  border: 1px solid #c7d2fe;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.09);
+}
+
+button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.filters {
+  flex-wrap: wrap;
+  margin: 1rem 0 1.25rem;
 }
 
 .auth-page,
