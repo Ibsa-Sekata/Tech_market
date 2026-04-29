@@ -63,7 +63,6 @@ productSchema.pre("validate", function setSlug(next) {
 productSchema.index({ name: "text" });
 productSchema.index({ category: 1 });
 productSchema.index({ price: 1 });
-productSchema.index({ slug: 1 }, { unique: true });
 
 const Product = mongoose.model("Product", productSchema);
 
