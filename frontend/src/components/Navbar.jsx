@@ -1,15 +1,25 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { useCart } from "../context/CartContext";
+import { useWishlist } from "../context/WishlistContext";
+import { useState } from "react";
 
 export default function Navbar() {
   const { user, isAuthenticated, isAdmin, logout } = useAuth();
   const { cart } = useCart();
+  const { items: wishlistItems } = useWishlist();
   const navigate = useNavigate();
+  const [search, setSearch] = useState("");
 
   function handleLogout() {
     logout();
     navigate("/");
+  }
+
+  function handleSearch(e) {
+    e.preventDefault();
+    if (!search) return navigate("/shop");
+    navigate(`/shop?search=${encodeURIComponent(search)}`);
   }
 
   return (
@@ -18,9 +28,23 @@ export default function Navbar() {
         <Link className="brand" to="/">
           TechMarket
         </Link>
-        <nav className="nav-links">
-          <NavLink to="/shop">Shop</NavLink>
-          <NavLink to="/cart">Cart ({cart.itemCount})</NavLink>
+        <div style={{display:'flex',alignItems:'center',gap:'.75rem'}}>
+          <form onSubmit={handleSearch} className="navbar-search">
+            <input
+              placeholder="Search products..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+          </form>
+          <nav className="nav-links">
+            <NavLink to="/shop">Shop</NavLink>
+            <NavLink to="/cart">Cart ({cart.itemCount})</NavLink>
+            <Link className="wishlist-link" to="/wishlist">
+              Wishlist
+              {wishlistItems.length > 0 && (
+                <span className="wishlist-badge">{wishlistItems.length}</span>
+              )}
+            </Link>
           {isAuthenticated ? (
             <>
               <NavLink to="/profile">{user?.name || "Profile"}</NavLink>
