@@ -67,7 +67,7 @@ userSchema.methods.createResetToken = function createResetToken() {
     return resetToken;
 };
 
-userSchema.index({ email: 1 }, { unique: true });
+// `email` field is declared with `unique: true` above; avoid duplicate index declaration.
 
 const User = mongoose.model("User", userSchema);
 
