@@ -28,7 +28,7 @@ export default function Navbar() {
         <Link className="brand" to="/">
           TechMarket
         </Link>
-        <div style={{display:'flex',alignItems:'center',gap:'.75rem'}}>
+        <div style={{ display: "flex", alignItems: "center", gap: ".75rem" }}>
           <form onSubmit={handleSearch} className="navbar-search">
             <input
               placeholder="Search products..."
@@ -39,32 +39,33 @@ export default function Navbar() {
           <nav className="nav-links">
             <NavLink to="/shop">Shop</NavLink>
             <NavLink to="/cart">Cart ({cart.itemCount})</NavLink>
-            <Link className="wishlist-link" to="/wishlist">
+            <NavLink className="wishlist-link" to="/wishlist">
               Wishlist
               {wishlistItems.length > 0 && (
                 <span className="wishlist-badge">{wishlistItems.length}</span>
               )}
-            </Link>
-          {isAuthenticated ? (
-            <>
-              <NavLink to="/profile">{user?.name || "Profile"}</NavLink>
-              <NavLink to="/orders">Orders</NavLink>
-              {isAdmin && <NavLink to="/admin">Admin</NavLink>}
-              <button
-                className="link-button"
-                onClick={handleLogout}
-                type="button"
-              >
-                Logout
-              </button>
-            </>
-          ) : (
-            <>
-              <NavLink to="/login">Login</NavLink>
-              <NavLink to="/register">Register</NavLink>
-            </>
-          )}
-        </nav>
+            </NavLink>
+            {isAuthenticated ? (
+              <>
+                <NavLink to="/profile">{user?.name || "Profile"}</NavLink>
+                <NavLink to="/orders">Orders</NavLink>
+                {isAdmin && <NavLink to="/admin">Admin</NavLink>}
+                <button
+                  className="link-button"
+                  onClick={handleLogout}
+                  type="button"
+                >
+                  Logout
+                </button>
+              </>
+            ) : (
+              <>
+                <NavLink to="/login">Login</NavLink>
+                <NavLink to="/register">Register</NavLink>
+              </>
+            )}
+          </nav>
+        </div>
       </div>
     </header>
   );

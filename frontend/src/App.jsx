@@ -13,6 +13,7 @@ import ProductDetailPage from "./pages/ProductDetailPage";
 import ProfilePage from "./pages/ProfilePage";
 import RegisterPage from "./pages/RegisterPage";
 import ShopPage from "./pages/ShopPage";
+import WishlistPage from "./pages/WishlistPage";
 
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
         <Route element={<ShopPage />} path="/shop" />
         <Route element={<ProductDetailPage />} path="/products/:id" />
         <Route element={<CartPage />} path="/cart" />
+        <Route element={<WishlistPage />} path="/wishlist" />
         <Route element={<LoginPage />} path="/login" />
         <Route element={<RegisterPage />} path="/register" />
         <Route
