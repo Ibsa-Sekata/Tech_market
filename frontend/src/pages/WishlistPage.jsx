@@ -43,7 +43,10 @@ export default function WishlistPage() {
               <div className="card-footer">
                 <div className="price-tag">${product.price.toFixed(2)}</div>
                 <div className="row gap">
-                  <Link className="btn-secondary" to={`/products/${product._id}`}>
+                  <Link
+                    className="btn-secondary"
+                    to={`/products/${product._id}`}
+                  >
                     View
                   </Link>
                   <button
